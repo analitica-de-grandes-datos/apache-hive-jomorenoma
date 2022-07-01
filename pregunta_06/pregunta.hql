@@ -49,6 +49,6 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 INSERT OVERWRITE LOCAL DIRECTORY 'output' 
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
 SELECT
-        UPEER(concat_ws(':',c5))
+        UPPER(concat_ws(':',c5))
 FROM
 	tbl0;

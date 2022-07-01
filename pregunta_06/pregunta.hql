@@ -46,3 +46,10 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
+INSERT OVERWRITE LOCAL DIRECTORY 'output' 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
+SELECT
+        collect_list(UPPER(val))
+FROM
+(SELECT explode(c5) as val FROM tbl0);
+

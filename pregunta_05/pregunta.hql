@@ -45,8 +45,8 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
-INSERT OVERWRITE LOCAL DIRECTORY 'output'
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+INSERT OVERWRITE LOCAL DIRECTORY 'output' 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
 SELECT
         anio,
 	letra,
@@ -58,6 +58,6 @@ FROM
 FROM
 	tbl0 LATERAL VIEW EXPLODE(C5) As letra) 
 GROUP BY
-        anio,letra
+        anio,letra 
 ORDER BY
 	anio,letra;

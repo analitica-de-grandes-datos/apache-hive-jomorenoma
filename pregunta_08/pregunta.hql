@@ -50,13 +50,13 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT
-	letra,
-	SUM(valor)
+	m.letra,
+	SUM(m.valor)
 FROM
 (SELECT
         c2 as letra,
         map_values(c6) as valor
 FROM
-	tbl0)
+	tbl0) m
 GROUP BY
 	letra;

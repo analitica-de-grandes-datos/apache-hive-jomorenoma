@@ -54,9 +54,10 @@ SELECT
 FROM
 (SELECT
         YEAR(c4) AS anio,
-	c5 AS letra 
+	c5
 FROM
-	tbl0 LATERAL VIEW EXPLODE(C5) As letra) 
+	tbl0 
+LATERAL VIEW EXPLODE(C5) list As letra) 
 GROUP BY
         anio,letra 
 ORDER BY

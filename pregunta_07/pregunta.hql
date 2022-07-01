@@ -50,7 +50,7 @@ INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT
         c2,
-	CONCAT_WS(':',collect_list(CAST(c1)
+	CONCAT_WS(':',collect_list(CAST(c1)))
 FROM
         tbl0
 GROUP BY 

@@ -49,14 +49,17 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 
 INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+COLLECTION ITEMS TERMINATED BY ':'
+
 SELECT
-	m.letra,
-	SUM(m.valor)
+	b.letra,
+	SUM(b.numeros)
 FROM
 (SELECT
-        c2 as letra,
-        map_values(c6) as valor
+        t.c2 AS letra,
+        numeros
 FROM
-	tbl0) m
+	tbl0 t
+LATERAL VIEW EXPLODE(map_value(t.c6)) lista As numeros) AS b
 GROUP BY
-	letra;
+	b.letra;

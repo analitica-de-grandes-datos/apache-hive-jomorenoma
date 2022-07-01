@@ -57,6 +57,6 @@ FROM
 	letra
 FROM
 	tbl0 t 
-LATERAL VIEW EXPLODE(t.c5) fv As letra) AS b
+LATERAL VIEW EXPLODE(t.c5) lista As letra) AS b
 GROUP BY
         b.anio,b.letra;

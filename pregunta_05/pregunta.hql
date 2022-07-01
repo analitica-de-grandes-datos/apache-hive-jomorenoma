@@ -48,17 +48,15 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 INSERT OVERWRITE LOCAL DIRECTORY 'output' 
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
 SELECT
-        anio,
-	letra,
-	COUNT(letra) AS conteo 
+        b.anio,
+	b.letra,
+	COUNT(b.letra) AS conteo 
 FROM
 (SELECT
-        YEAR(c4) AS anio,
-	c5
+        YEAR(t.c4) AS anio,
+	letra
 FROM
-	tbl0 
-LATERAL VIEW EXPLODE(C5) list As letra) 
+	tbl0 t 
+LATERAL VIEW EXPLODE(t.c5) fv As letra) AS b
 GROUP BY
-        anio,letra 
-ORDER BY
-	anio,letra;
+        b.anio,b.letra;

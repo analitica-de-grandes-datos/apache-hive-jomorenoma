@@ -60,6 +60,6 @@ FROM
         numeros
 FROM
 	tbl0 t
-LATERAL VIEW EXPLODE(map_value(t.c6)) lista As numeros) AS b
+LATERAL VIEW EXPLODE(map_values(t.c6)) lista As numeros) AS b
 GROUP BY
 	b.letra;

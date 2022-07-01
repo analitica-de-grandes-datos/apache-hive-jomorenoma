@@ -54,7 +54,7 @@ SELECT
 	SUM(valor)
 FROM
 (SELECT
-        letra,
+        c2 as letra,
         m.value as valor
 FROM
 	tbl0, tbl0.c6 m)

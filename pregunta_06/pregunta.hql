@@ -49,7 +49,7 @@ LOAD DATA LOCAL INPATH 'data1.csv' INTO TABLE tbl1;
 INSERT OVERWRITE LOCAL DIRECTORY 'output' 
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
 SELECT
-        collect_list (UPPER(exploded))
+        concat_ws(':',collect_list (UPPER(exploded))
 FROM
 	tbl0 
 LATERAL VIEW explode(c5) exploded_table as exploded;

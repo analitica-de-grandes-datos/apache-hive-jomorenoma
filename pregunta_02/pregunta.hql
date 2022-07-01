@@ -29,4 +29,4 @@ SELECT
 FROM 
 	Tabla
 ORDER BY
-	letra, numero;
+	letra, numero, fecha;

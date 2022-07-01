@@ -55,8 +55,8 @@ SELECT
 FROM
 (SELECT
         c2 as letra,
-        m.value as valor
+        map_values(c6) as valor
 FROM
-	tbl0, tbl0.c6 m)
+	tbl0)
 GROUP BY
 	letra;

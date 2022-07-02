@@ -36,4 +36,4 @@ SELECT
 	size(c2),
 	size(c3)
 FROM
-	tbl0;
+	t0;

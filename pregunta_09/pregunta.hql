@@ -50,13 +50,8 @@ INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 
 SELECT
-	c1,
-	c2,
-	c4[c2]
+	tbl0.c1,
+	tbl0.c2,
+	tbl1.c4[tbl0.c2]
 FROM
-(SELECT
-	tbl0.c1 AS c1,
-	tbl0.c2 AS c2,
-	tbl1.c4 AS c4
-FROM
-	tbl0 JOIN tbl1 ON tbl0.c1 = tbl1.c1);
+	tbl0 JOIN tbl1 ON tbl0.c1 = tbl1.c1;

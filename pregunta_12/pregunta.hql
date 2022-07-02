@@ -36,12 +36,16 @@ LOAD DATA LOCAL INPATH 'data.tsv' INTO TABLE t0;
 INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT
-	l_c2,
-	l_c3,
-	COUNT(l_c3)
+	b.l_c2,
+	b.l_c3,
+	COUNT(b.lc2,b.l_c3)
 FROM
-	t0
-LATERAL VIEW EXPLODE(map_valus(t0.c3)) lista1 As l_c3 
-LATERAL VIEW EXPLODE(t0.c2) lista2 As l_c2
+(SELECT
+	l_c2,
+	l_c3
+FROM
+	t0 t
+LATERAL VIEW EXPLODE(map_values(t.c3)) lista1 As l_c3 
+LATERAL VIEW EXPLODE(t.c2) lista2 As l_c2) AS b
 GROUP BY
 	l_c2,l_c3;

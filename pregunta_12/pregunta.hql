@@ -38,7 +38,7 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 SELECT
 	b.l_c2,
 	b.l_c3,
-	COUNT(b.lc2,b.l_c3)
+	COUNT(b.l_c2,b.l_c3)
 FROM
 (SELECT
 	l_c2,

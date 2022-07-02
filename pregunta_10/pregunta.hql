@@ -34,9 +34,12 @@ INSERT OVERWRITE LOCAL DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 
 SELECT
-	map_keys(c3) AS key,
-	COUNT(map_keys(c3)) AS conteo
-FROM 
-	t0
+	key,
+	COUNT(key)
+FROM
+(SELECT
+	EXPLODE(map_keys(c3)) as key
+FROM
+	t0)
 GROUP BY
 	key;

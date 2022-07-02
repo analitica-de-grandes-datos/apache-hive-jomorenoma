@@ -48,4 +48,4 @@ FROM
 LATERAL VIEW EXPLODE(map_values(t.c3)) lista1 As l_c3 
 LATERAL VIEW EXPLODE(t.c2) lista2 As l_c2) AS b
 GROUP BY
-	l_c2,l_c3;
+	b.l_c2,b.l_c3;

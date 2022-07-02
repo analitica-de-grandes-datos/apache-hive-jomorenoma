@@ -30,3 +30,13 @@ LOAD DATA LOCAL INPATH 'data.tsv' INTO TABLE t0;
     >>> Escriba su respuesta a partir de este punto <<<
 */
 
+INSERT OVERWRITE LOCAL DIRECTORY 'output'
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+
+SELECT
+	map_keys(c3) AS key,
+	COUNT(map_keys(c3)) AS conteo
+FROM 
+	t0
+GROUP BY
+	key;
